@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://de2alqpdb0628"]
+
+[ext_resource type="Script" uid="uid://tnwmt2cnfr7c" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://blwf2if0pypit" path="res://player.gd" id="2_h2yge"]
+
+[sub_resource type="Environment" id="Environment_7dm0k"]
+background_mode = 1
+background_color = Color(0.054573774, 0.054573774, 0.05457376, 1)
+
+[node name="Main" type="Node3D" unique_id=2077605418]
+script = ExtResource("1_0xm2m")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1677548700]
+environment = SubResource("Environment_7dm0k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1624864757]
+transform = Transform3D(0.7071068, 0.7071067, 0, -0.7071067, 0.7071068, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=722483316]
+
+[node name="InfoWindow" type="Panel" parent="UI" unique_id=264414132]
+visible = false
+custom_minimum_size = Vector2(400, 600)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InfoWindow" unique_id=1575360331]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/InfoWindow/MarginContainer" unique_id=788271864]
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/InfoWindow/MarginContainer/ScrollContainer" unique_id=1698465302]
+layout_mode = 2
+
+[node name="InfoText" type="Label" parent="UI/InfoWindow/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2072091366]
+custom_minimum_size = Vector2(400, 1)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="InfoMeta" type="Label" parent="UI/InfoWindow/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1769002070]
+custom_minimum_size = Vector2(400, 1)
+layout_mode = 2
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="UI/InfoWindow/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1362673185]
+layout_mode = 2
+text = "========
+ = Close =
+========"
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1438005070]
+script = ExtResource("2_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1081748820]
+near = 0.001
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/Camera3D" unique_id=860718645]
+target_position = Vector3(0, 0, -100)
+
+[node name="AimCursor" type="CanvasLayer" parent="." unique_id=1566320603]
+
+[node name="Plus" type="Label" parent="AimCursor" unique_id=1618405014]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
